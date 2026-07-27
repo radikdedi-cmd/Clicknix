@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>CyberClicker - Infinite Empire</title>
     <!-- Подключаем Adsgram -->
-    <script src="https://adsgram.ai/js/adsgram-ad-controller.js"></script>
+    <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
     <style>
         /* ===== Улучшенная цветовая схема: тёмная, контрастная, сочная ===== */
         * {
@@ -1682,36 +1682,28 @@
         }
 
         // ---- WATCH AD (с интеграцией Adsgram) ----
+        let AdController = null;
+        if (typeof window.Adsgram !== 'undefined') {
+            try {
+                AdController = window.Adsgram.init({ blockId: 'int-39991' });
+            } catch (e) {
+                console.warn('Adsgram init error:', e);
+            }
+        } else {
+            console.warn('Adsgram SDK not loaded');
+        }
+
         function watchAd() {
-            // Проверяем, доступен ли Adsgram
-            if (typeof AdsgramController !== 'undefined') {
-                try {
-                    const controller = new AdsgramController({
-                        blockId: 'int-39991',
-                        onReward: () => {
-                            // Успешный просмотр – начисляем награду
-                            grantAdReward();
-                        },
-                        onError: (err) => {
-                            console.warn('Adsgram error:', err);
-                            // Можно показать сообщение или повторить попытку
-                            // Но чтобы не раздражать, просто ничего не делаем.
-                        },
-                        onDismiss: () => {
-                            // Пользователь закрыл рекламу до завершения – ничего не даём
-                            console.log('Ad dismissed');
-                        }
-                    });
-                    controller.show();
-                } catch (e) {
-                    console.warn('Adsgram controller error:', e);
-                    // Fallback: симулируем награду
+            if (AdController) {
+                AdController.show().then(() => {
+                    // Пользователь досмотрел рекламу до конца – начисляем награду
                     grantAdReward();
-                }
+                }).catch((result) => {
+                    // Реклама не показана / пропущена / ошибка – награду не даём
+                    console.warn('Ad not completed:', result);
+                });
             } else {
-                // Если Adsgram не загружен – используем старую симуляцию
-                console.warn('Adsgram not loaded, using fallback');
-                grantAdReward();
+                console.warn('Adsgram not available, ad cannot be shown');
             }
         }
 
