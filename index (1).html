@@ -792,6 +792,291 @@
             opacity: 0.3;
             cursor: not-allowed;
         }
+
+        /* ===== Epoch / Boss Panel ===== */
+        #epochPanel {
+            background: var(--bg-card);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(244, 114, 182, 0.2);
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+        }
+        #epochPanel .ep-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--accent-pink);
+        }
+        #epochPanel .ep-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin: 6px 0 10px 0;
+        }
+        .ep-progress-track {
+            background: rgba(0,0,0,0.35);
+            border-radius: 20px;
+            height: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        .ep-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-pink), var(--accent-purple));
+            transition: width 0.3s;
+        }
+        .btn-boss {
+            background: linear-gradient(135deg, #ef4444, #f472b6);
+            border: none;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 0 30px rgba(244, 114, 182, 0.25);
+            font-family: var(--font);
+            width: 100%;
+        }
+        .btn-boss:active { transform: scale(0.96); }
+        .btn-boss:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* ===== Achievements ===== */
+        .ach-summary {
+            font-size: 12px;
+            color: var(--accent-green);
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .ach-item {
+            background: var(--bg-card);
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+        .ach-item.unlocked {
+            border-color: rgba(52, 211, 153, 0.35);
+            background: rgba(52, 211, 153, 0.06);
+        }
+        .ach-item .ach-icon {
+            font-size: 22px;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.3);
+            border-radius: var(--radius-sm);
+            flex-shrink: 0;
+        }
+        .ach-item .ach-info { flex: 1; min-width: 0; }
+        .ach-item .ach-name { font-weight: 700; font-size: 13px; }
+        .ach-item .ach-desc { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
+        .ach-item .ach-check { font-size: 16px; color: var(--accent-green); }
+
+        /* ===== Boss Fight Modal ===== */
+        #bossModal {
+            display: none;
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 110;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        #bossModal.show { display: flex; }
+        #bossModal .modal-box {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 28px 22px;
+            max-width: 360px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(244, 114, 182, 0.25);
+            box-shadow: 0 0 40px rgba(244, 114, 182, 0.12);
+        }
+        #bossModal h2 { font-size: 20px; margin-bottom: 4px; color: var(--accent-pink); }
+        #bossModal .boss-timer {
+            font-size: 32px;
+            font-weight: 800;
+            font-variant-numeric: tabular-nums;
+            margin: 6px 0;
+        }
+        .boss-hp-track {
+            background: rgba(0,0,0,0.4);
+            border-radius: 20px;
+            height: 20px;
+            overflow: hidden;
+            margin: 12px 0;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .boss-hp-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ef4444, #facc15);
+            transition: width 0.1s linear;
+        }
+        #bossAttackBtn {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #6f1e2f, #280a14);
+            border: 2px solid rgba(244, 114, 182, 0.3);
+            font-size: 56px;
+            cursor: pointer;
+            margin: 10px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 60px rgba(244, 114, 182, 0.15);
+            touch-action: none;
+        }
+        #bossAttackBtn:active { transform: scale(0.94); }
+        #bossCloseBtn {
+            background: rgba(255,255,255,0.08);
+            border: none;
+            color: var(--text-secondary);
+            padding: 8px 22px;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            margin-top: 12px;
+            font-family: var(--font);
+        }
+
+        /* ===== Flying Bonus ===== */
+        .flying-bonus {
+            position: absolute;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #2a3d5c, #0a1628);
+            border: 2px solid var(--accent-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            cursor: pointer;
+            z-index: 20;
+            box-shadow: 0 0 24px rgba(250, 204, 21, 0.4);
+            animation: bonusPulse 0.6s ease-in-out infinite alternate;
+        }
+        @keyframes bonusPulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.12); }
+        }
+
+        /* ===== Settings Modal ===== */
+        #settingsModal {
+            display: none;
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 120;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        #settingsModal.show { display: flex; }
+        #settingsModal .modal-box {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 24px 20px;
+            width: 100%;
+            border: 1px solid rgba(56, 189, 248, 0.15);
+            box-shadow: var(--shadow-glow);
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+        .modal-close-x {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            font-size: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-family: var(--font);
+        }
+        .modal-close-x:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--text-primary);
+        }
+        .modal-close-x:active {
+            transform: scale(0.9);
+        }
+        .settings-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .settings-toggle {
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: var(--accent-cyan);
+            padding: 5px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: var(--font);
+        }
+        .settings-toggle.off {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(255,255,255,0.1);
+            color: var(--text-muted);
+        }
+        .referral-code-box {
+            background: rgba(0,0,0,0.35);
+            border: 1px dashed rgba(56, 189, 248, 0.35);
+            border-radius: var(--radius-sm);
+            padding: 10px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--accent-cyan);
+            user-select: text;
+            -webkit-user-select: text;
+        }
+        .referral-input {
+            flex: 1;
+            background: rgba(0,0,0,0.35);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-primary);
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-family: var(--font);
+            outline: none;
+            min-width: 0;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 <body>
@@ -804,6 +1089,46 @@
                 <p>While you were away, your empire kept growing.</p>
                 <div class="offline-reward" id="offlineReward">+0</div>
                 <button class="btn-claim" id="offlineClaimBtn">Claim Reward</button>
+            </div>
+        </div>
+
+        <!-- ===== BOSS FIGHT MODAL ===== -->
+        <div id="bossModal">
+            <div class="modal-box">
+                <h2 id="bossName">⚔️ Boss</h2>
+                <div class="boss-timer" id="bossTimer">60</div>
+                <div class="boss-hp-track"><div class="boss-hp-fill" id="bossHpFill" style="width:100%"></div></div>
+                <div id="bossHpText" style="font-size:12px;color:var(--text-secondary);">HP</div>
+                <button id="bossAttackBtn">👊</button>
+                <button id="bossCloseBtn" data-lang="close">Close</button>
+            </div>
+        </div>
+
+        <!-- ===== SETTINGS MODAL ===== -->
+        <div id="settingsModal">
+            <div class="modal-box" style="text-align:left;max-width:340px;position:relative;">
+                <button id="settingsCloseBtn" class="modal-close-x">✕</button>
+                <h2 style="text-align:center;margin-bottom:14px;" data-lang="settings_title">⚙️ Settings</h2>
+
+                <div class="settings-row">
+                    <span data-lang="sound_label">🔊 Sound Effects</span>
+                    <button class="settings-toggle" id="muteBtn">ON</button>
+                </div>
+                <div class="settings-row">
+                    <span data-lang="language_label">🌐 Language</span>
+                    <select id="langSelect"></select>
+                </div>
+
+                <div class="section-title" data-lang="referral_title" style="margin-top:16px;">🤝 Invite a Friend</div>
+                <div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;" data-lang="referral_desc">Share your code with a friend. When they enter it, you both get 150 💎 and 100,000 🪙 (one-time).</div>
+                <div class="referral-code-box" id="myReferralCode">-</div>
+                <button class="btn-ad small" id="copyReferralBtn" style="margin-top:8px;" data-lang="referral_copy">📋 Copy My Code</button>
+
+                <div style="margin-top:14px;display:flex;gap:6px;">
+                    <input type="text" id="referralInput" class="referral-input" data-lang-ph="referral_placeholder" placeholder="Friend's code">
+                    <button class="btn-ad small" id="referralSubmitBtn" data-lang="referral_submit">Redeem</button>
+                </div>
+                <div id="referralMsg" style="font-size:12px;margin-top:8px;color:var(--accent-green);"></div>
             </div>
         </div>
 
@@ -824,8 +1149,7 @@
                 </div>
             </div>
             <div class="top-right">
-                <button class="top-btn" id="muteBtn" title="Toggle Sound">🔊</button>
-                <select id="langSelect"></select>
+                <button class="top-btn" id="settingsBtn" title="Settings">⚙️</button>
             </div>
         </div>
 
@@ -874,6 +1198,14 @@
                 <div class="section-title" data-lang="tab_perks">🌿 Perk Tree</div>
                 <div id="perkList"></div>
             </div>
+
+            <!-- Tab 5: Goals (Epoch/Boss + Achievements) -->
+            <div class="tab-pane" id="pane5">
+                <div class="section-title" data-lang="tab_epoch">🗺️ Epoch</div>
+                <div id="epochPanel"></div>
+                <div class="section-title" data-lang="tab_achievements">🏆 Achievements</div>
+                <div id="achievementList"></div>
+            </div>
         </div>
 
         <!-- ===== TABS ===== -->
@@ -882,6 +1214,7 @@
             <button class="tab-btn" data-tab="2"><span class="tab-icon">🌀</span><span class="tab-label" data-lang="tab_passive_short">Passive</span></button>
             <button class="tab-btn" data-tab="3"><span class="tab-icon">💎</span><span class="tab-label" data-lang="tab_crystals_short">Shop</span></button>
             <button class="tab-btn" data-tab="4"><span class="tab-icon">🌟</span><span class="tab-label" data-lang="tab_prestige_short">Prestige</span></button>
+            <button class="tab-btn" data-tab="5"><span class="tab-icon">🏆</span><span class="tab-label" data-lang="tab_goals_short">Goals</span></button>
         </div>
     </div>
 
@@ -1031,7 +1364,36 @@
                 pt: 'Moedas', id: 'Koin', ur: 'سکے', ru: 'Монеты', de: 'Münzen', ja: 'コイン', pcm: 'Coins', arz: 'عملات' },
             prestige: { en: 'Prestige', zh: '威望', hi: 'प्रतिष्ठा', es: 'Prestigio', ar: 'هيبة', fr: 'Prestige', bn: 'মর্যাদা',
                 pt: 'Prestígio', id: 'Prestise', ur: 'وقار', ru: 'Престиж', de: 'Prestige', ja: 'プレステージ', pcm: 'Prestige',
-                arz: 'هيبة' }
+                arz: 'هيبة' },
+            tab_epoch: { en: '🗺️ Epoch', ru: '🗺️ Эпоха' },
+            tab_achievements: { en: '🏆 Achievements', ru: '🏆 Достижения' },
+            tab_goals_short: { en: 'Goals', ru: 'Цели' },
+            close: { en: 'Close', ru: 'Закрыть' },
+            epoch_current: { en: 'Current Epoch', ru: 'Текущая эпоха' },
+            epoch_progress: { en: 'Progress to Boss', ru: 'Прогресс до босса' },
+            epoch_challenge: { en: 'Challenge Boss', ru: 'Бросить вызов боссу' },
+            epoch_locked: { en: 'Earn more total coins to unlock the boss fight', ru: 'Заработайте больше монет, чтобы открыть бой с боссом' },
+            epoch_maxed: { en: 'All epochs conquered! More coming soon.', ru: 'Все эпохи пройдены! Скоро новые.' },
+            boss_victory: { en: '🎉 Boss defeated! New epoch unlocked!', ru: '🎉 Босс повержен! Открыта новая эпоха!' },
+            boss_fail: { en: '⏱️ Time is up! Try again.', ru: '⏱️ Время вышло! Попробуйте снова.' },
+            ach_unlocked_toast: { en: '🏆 Achievement unlocked!', ru: '🏆 Достижение открыто!' },
+            ach_bonus: { en: 'Total income bonus from achievements', ru: 'Общий бонус к доходу от достижений' },
+            hidden_ach_name: { en: '??? Hidden Achievement', ru: '??? Скрытое достижение' },
+            hidden_ach_desc: { en: 'Keep playing to discover this one', ru: 'Продолжайте играть, чтобы открыть' },
+            settings_title: { en: '⚙️ Settings', ru: '⚙️ Настройки' },
+            sound_label: { en: '🔊 Sound Effects', ru: '🔊 Звуковые эффекты' },
+            language_label: { en: '🌐 Language', ru: '🌐 Язык' },
+            referral_title: { en: '🤝 Invite a Friend', ru: '🤝 Пригласить друга' },
+            referral_desc: { en: "Share your code with a friend. When they enter it, you both get 150 💎 and 100,000 🪙 (one-time).", ru: 'Поделитесь своим кодом с другом. Когда он введёт его, вы оба получите 150 💎 и 100,000 🪙 (один раз).' },
+            referral_copy: { en: '📋 Copy My Code', ru: '📋 Скопировать код' },
+            referral_copied: { en: '✅ Copied!', ru: '✅ Скопировано!' },
+            referral_select_manually: { en: '👆 Code selected — press & hold to copy', ru: '👆 Код выделен — зажмите и скопируйте' },
+            referral_placeholder: { en: "Friend's code", ru: 'Код друга' },
+            referral_submit: { en: 'Redeem', ru: 'Активировать' },
+            referral_success: { en: '🎉 Code redeemed! +150 💎 +100,000 🪙', ru: '🎉 Код принят! +150 💎 +100,000 🪙' },
+            referral_own_code: { en: "❌ You can't use your own code", ru: '❌ Нельзя использовать свой код' },
+            referral_already: { en: '❌ You already redeemed a code', ru: '❌ Вы уже использовали код' },
+            referral_invalid: { en: '❌ Invalid code format', ru: '❌ Неверный формат кода' },
         };
 
         // ---- GAME STATE ----
@@ -1052,6 +1414,13 @@
             lastSave: Date.now(),
             totalCoinsEarned: 0,
             prestigeUnlocked: false,
+            // --- new persistent progression ---
+            totalClicks: 0,
+            prestigeCount: 0,
+            epoch: 0,                       // index into EPOCHS, permanent (not reset by prestige)
+            achievementsUnlocked: {},       // id -> true, permanent
+            referralCode: null,             // this player's own share code
+            referralRedeemed: false,        // whether they've already redeemed a friend code
         };
 
         // ---- UPGRADE DEFINITIONS ----
@@ -1204,6 +1573,30 @@
                 display: (lvl) => lvl > 0 ? '✅' : '🔒',
                 oneTime: true,
             },
+            reactor: {
+                id: 'reactor', tab: 1, icon: '⚛️', minEpoch: 1,
+                name: { en: 'Fusion Reactor', ru: 'Термоядерный реактор' },
+                desc: { en: '+80 coins/sec', ru: '+80 монет/сек' },
+                baseCost: 80000, costMultiplier: 1.16, maxLevel: Infinity,
+                effect: (lvl) => ({ autoIncome: lvl * 80 }),
+                display: (lvl) => `+${(lvl * 80).toFixed(1)}/s`,
+            },
+            quantumCore: {
+                id: 'quantumCore', tab: 1, icon: '🌌', minEpoch: 2,
+                name: { en: 'Quantum Core', ru: 'Квантовое ядро' },
+                desc: { en: '+1200 coins/sec', ru: '+1200 монет/сек' },
+                baseCost: 6000000, costMultiplier: 1.17, maxLevel: Infinity,
+                effect: (lvl) => ({ autoIncome: lvl * 1200 }),
+                display: (lvl) => `+${(lvl * 1200).toFixed(1)}/s`,
+            },
+            singularityDrive: {
+                id: 'singularityDrive', tab: 1, icon: '🕳️', minEpoch: 3,
+                name: { en: 'Singularity Drive', ru: 'Двигатель сингулярности' },
+                desc: { en: '+20000 coins/sec', ru: '+20000 монет/сек' },
+                baseCost: 500000000, costMultiplier: 1.18, maxLevel: Infinity,
+                effect: (lvl) => ({ autoIncome: lvl * 20000 }),
+                display: (lvl) => `+${(lvl * 20000).toFixed(1)}/s`,
+            },
         };
 
         // ---- CRYSTAL SHOP ----
@@ -1310,6 +1703,73 @@
             display: (lvl) => `${(lvl * 5).toFixed(0)}%`,
         }, ];
 
+        // ---- EPOCHS / BOSSES (permanent meta-progression, never reset) ----
+        // requirement = totalCoinsEarned needed (lifetime, current run) to unlock the boss fight
+        const EPOCHS = [
+            { name: { en: 'Cyber Garage', ru: 'Кибер-гараж' } },
+            { name: { en: 'Neon District', ru: 'Неоновый район' } },
+            { name: { en: 'Orbital Station', ru: 'Орбитальная станция' } },
+            { name: { en: 'Singularity Core', ru: 'Ядро сингулярности' } },
+        ];
+        const BOSSES = [
+            { requirement: 50000, hp: 4000, timeLimit: 45, rewardMult: 0.20, icon: '🤖',
+                name: { en: 'Junkyard Titan', ru: 'Титан свалки' } },
+            { requirement: 5000000, hp: 350000, timeLimit: 45, rewardMult: 0.25, icon: '👹',
+                name: { en: 'Neon Warlord', ru: 'Неоновый воевода' } },
+            { requirement: 500000000, hp: 30000000, timeLimit: 50, rewardMult: 0.30, icon: '🛸',
+                name: { en: 'Orbital Sentinel', ru: 'Орбитальный страж' } },
+        ];
+
+        // ---- ACHIEVEMENTS (permanent, never reset; each unlock adds +1.5% global income) ----
+        const ACHIEVEMENTS = [
+            { id: 'click100', icon: '👆', hidden: false,
+                name: { en: 'Getting Started', ru: 'Начало пути' }, desc: { en: 'Make 100 clicks', ru: 'Сделайте 100 кликов' },
+                check: () => G.totalClicks >= 100, reward: { crystals: 5 } },
+            { id: 'click1000', icon: '🖱️', hidden: false,
+                name: { en: 'Clicker', ru: 'Кликер' }, desc: { en: 'Make 1,000 clicks', ru: 'Сделайте 1,000 кликов' },
+                check: () => G.totalClicks >= 1000, reward: { crystals: 15 } },
+            { id: 'click25000', icon: '⚡', hidden: false,
+                name: { en: 'Click Machine', ru: 'Кликающая машина' }, desc: { en: 'Make 25,000 clicks', ru: 'Сделайте 25,000 кликов' },
+                check: () => G.totalClicks >= 25000, reward: { crystals: 60 } },
+            { id: 'balance1k', icon: '🪙', hidden: false,
+                name: { en: 'First Thousand', ru: 'Первая тысяча' }, desc: { en: 'Earn 1,000 total coins', ru: 'Заработайте 1,000 монет' },
+                check: () => G.totalCoinsEarned >= 1000, reward: { crystals: 5 } },
+            { id: 'balance1m', icon: '💰', hidden: false,
+                name: { en: 'Millionaire', ru: 'Миллионер' }, desc: { en: 'Earn 1,000,000 total coins', ru: 'Заработайте 1,000,000 монет' },
+                check: () => G.totalCoinsEarned >= 1000000, reward: { crystals: 30 } },
+            { id: 'balance1b', icon: '🏦', hidden: false,
+                name: { en: 'Billionaire', ru: 'Миллиардер' }, desc: { en: 'Earn 1,000,000,000 total coins', ru: 'Заработайте 1,000,000,000 монет' },
+                check: () => G.totalCoinsEarned >= 1000000000, reward: { crystals: 100 } },
+            { id: 'lvl25', icon: '📈', hidden: false,
+                name: { en: 'Investor', ru: 'Инвестор' }, desc: { en: 'Upgrade any building to level 25', ru: 'Прокачайте любое здание до 25 уровня' },
+                check: () => Object.values(G.upgrades).some(l => l >= 25), reward: { crystals: 20 } },
+            { id: 'lvl50', icon: '🏗️', hidden: false,
+                name: { en: 'Tycoon', ru: 'Магнат' }, desc: { en: 'Upgrade any building to level 50', ru: 'Прокачайте любое здание до 50 уровня' },
+                check: () => Object.values(G.upgrades).some(l => l >= 50), reward: { crystals: 40 } },
+            { id: 'lvl100', icon: '🏙️', hidden: false,
+                name: { en: 'Empire Builder', ru: 'Строитель империи' }, desc: { en: 'Upgrade any building to level 100', ru: 'Прокачайте любое здание до 100 уровня' },
+                check: () => Object.values(G.upgrades).some(l => l >= 100), reward: { crystals: 80 } },
+            { id: 'prestige1', icon: '🌟', hidden: false,
+                name: { en: 'Reborn', ru: 'Перерождение' }, desc: { en: 'Prestige for the first time', ru: 'Совершите первое перерождение' },
+                check: () => G.prestigeCount >= 1, reward: { crystals: 25 } },
+            { id: 'prestige5', icon: '✨', hidden: false,
+                name: { en: 'Ascended', ru: 'Вознесённый' }, desc: { en: 'Prestige 5 times', ru: 'Совершите 5 перерождений' },
+                check: () => G.prestigeCount >= 5, reward: { crystals: 100 } },
+            { id: 'boss1', icon: '⚔️', hidden: false,
+                name: { en: 'Boss Slayer', ru: 'Победитель босса' }, desc: { en: 'Defeat your first epoch boss', ru: 'Победите первого босса эпохи' },
+                check: () => G.epoch >= 1, reward: { crystals: 50 } },
+            // --- hidden / quirky ---
+            { id: 'hidden_lucky', icon: '🍀', hidden: true,
+                name: { en: 'Lucky Strike', ru: 'Счастливый удар' }, desc: { en: 'Land a critical AND a double coin on the same click', ru: 'Получите крит и удвоение монет одним кликом' },
+                check: () => G.metaLuckyHit === true, reward: { crystals: 30 } },
+            { id: 'hidden_patient', hidden: true, icon: '⏳',
+                name: { en: 'Patience', ru: 'Терпение' }, desc: { en: 'Come back after 8+ hours away and claim offline earnings', ru: 'Вернитесь через 8+ часов и заберите офлайн-доход' },
+                check: () => G.metaLongOffline === true, reward: { crystals: 50 } },
+            { id: 'hidden_friend', hidden: true, icon: '🤝',
+                name: { en: 'Not Alone', ru: 'Не один в поле' }, desc: { en: 'Redeem a friend\'s referral code', ru: 'Введите реферальный код друга' },
+                check: () => G.referralRedeemed === true, reward: { crystals: 20 } },
+        ];
+
         // ---- STATE HELPERS ----
         function getUpgradeLevel(id) { return G.upgrades[id] || 0; }
         function getUpgradeCost(id) {
@@ -1325,17 +1785,58 @@
             if (lvl >= p.maxLevel) return Infinity;
             return Math.floor(p.baseCost * Math.pow(p.costMultiplier, lvl));
         }
+        // Milestone multipliers: level 25 -> x2, level 50 -> x4 (cumulative), level 100 -> x8 (cumulative),
+        // then every further +100 levels doubles again, so long-term investment keeps paying off.
+        function milestoneMultiplier(lvl) {
+            let m = 1;
+            if (lvl >= 25) m *= 2;
+            if (lvl >= 50) m *= 2;
+            if (lvl >= 100) m *= 2;
+            if (lvl > 100) m *= Math.pow(2, Math.floor((lvl - 100) / 100));
+            return m;
+        }
+        // Recomputes clickPower/autoIncome/critChance/doubleChance from scratch based on upgrade levels.
+        // (Avoids the old bug where buying an upgrade re-added the FULL level effect instead of the delta,
+        // which made the economy snowball out of control within minutes.)
+        function recomputeStats() {
+            let clickPower = 1, autoIncome = 0, critChance = 0, doubleChance = 0;
+            for (const [id, lvl] of Object.entries(G.upgrades)) {
+                const u = UPGRADES[id];
+                if (!u || !lvl) continue;
+                const eff = u.effect(lvl);
+                const m = milestoneMultiplier(lvl);
+                if (eff.clickPower) clickPower += eff.clickPower * m;
+                if (eff.autoIncome) autoIncome += eff.autoIncome * m;
+                if (eff.critChance !== undefined) critChance = Math.max(critChance, eff.critChance);
+                if (eff.doubleChance !== undefined) doubleChance = Math.max(doubleChance, eff.doubleChance);
+            }
+            G.clickPower = clickPower;
+            G.autoIncome = autoIncome;
+            G.critChance = Math.min(critChance, 0.8);
+            G.doubleChance = Math.min(doubleChance, 0.8);
+        }
+        function getAchievementMult() {
+            return 1 + Object.keys(G.achievementsUnlocked || {}).length * 0.015;
+        }
+        function getEpochMult() {
+            let m = 1;
+            for (let i = 0; i < G.epoch; i++) {
+                if (BOSSES[i]) m += BOSSES[i].rewardMult;
+            }
+            return m;
+        }
         function getTotalIncome() {
             let base = G.autoIncome;
             const autoMult = 1 + (G.perks.autoMult || 0);
             const incomeMult = 1 + (G.perks.incomeMult || 0);
-            let income = base * autoMult * incomeMult;
+            let income = base * autoMult * incomeMult * getAchievementMult() * getEpochMult();
             if (G.incomeBoost.active) income *= G.incomeBoost.multiplier;
             return income;
         }
         function getClickPower() {
             let power = G.clickPower;
             power *= (1 + (G.perks.clickMult || 0));
+            power *= getAchievementMult() * getEpochMult();
             if (G.incomeBoost.active) power *= G.incomeBoost.multiplier;
             return power;
         }
@@ -1367,6 +1868,10 @@
             document.querySelectorAll('[data-lang]').forEach(el => {
                 const key = el.dataset.lang;
                 el.textContent = t(key);
+            });
+            document.querySelectorAll('[data-lang-ph]').forEach(el => {
+                const key = el.dataset.langPh;
+                el.placeholder = t(key);
             });
             renderAll();
         }
@@ -1521,6 +2026,7 @@
                 coinsEarned *= 2;
                 isDouble = true;
             }
+            if (isCrit && isDouble) G.metaLuckyHit = true;
             if (Math.random() < 0.01) {
                 const crystalAmt = 1 + Math.floor(Math.random() * 3);
                 G.crystals += crystalAmt;
@@ -1532,6 +2038,7 @@
             G.coins += coinsEarned;
             G.totalCoins += coinsEarned;
             G.totalCoinsEarned = (G.totalCoinsEarned || 0) + coinsEarned;
+            G.totalClicks = (G.totalClicks || 0) + 1;
 
             let label = '+' + coinsEarned;
             if (isCrit) label = '🔥 CRIT! +' + coinsEarned;
@@ -1540,6 +2047,7 @@
 
             updateUI();
             checkPrestigeUnlock();
+            checkAchievements();
         }
 
         // ---- AUTO TICK ----
@@ -1557,6 +2065,7 @@
                     G.totalCoinsEarned = (G.totalCoinsEarned || 0) + earned;
                     updateUI();
                     checkPrestigeUnlock();
+                    checkAchievements();
                 }
             }
             if (G.incomeBoost.active && Date.now() > G.incomeBoost.end) {
@@ -1577,19 +2086,18 @@
             soundPrestige();
             G.prestigePoints += earnable;
             G.totalPrestigePoints += earnable;
+            G.prestigeCount = (G.prestigeCount || 0) + 1;
             G.coins = 0;
             G.totalCoins = 0;
             G.totalCoinsEarned = 0;
             G.upgrades = {};
-            G.clickPower = 1;
-            G.autoIncome = 0;
-            G.critChance = 0;
-            G.doubleChance = 0;
             G.incomeBoost.active = false;
             G.autoBoost.active = false;
+            recomputeStats();
             updateUI();
             renderAll();
             showFloatingText('🌟 PRESTIGE! +' + earnable + ' ✨', 'crit');
+            checkAchievements();
             saveGame();
         }
         function checkPrestigeUnlock() {
@@ -1604,6 +2112,7 @@
         function buyUpgrade(id) {
             const u = UPGRADES[id];
             if (!u) return;
+            if (u.minEpoch && G.epoch < u.minEpoch) return;
             const lvl = getUpgradeLevel(id);
             if (u.oneTime && lvl >= 1) return;
             const cost = getUpgradeCost(id);
@@ -1611,14 +2120,11 @@
             if (G.coins < cost) return;
             G.coins -= cost;
             G.upgrades[id] = (G.upgrades[id] || 0) + 1;
-            const eff = u.effect(getUpgradeLevel(id));
-            if (eff.clickPower) G.clickPower += eff.clickPower;
-            if (eff.autoIncome) G.autoIncome += eff.autoIncome;
-            if (eff.critChance !== undefined) G.critChance = Math.min(eff.critChance, 0.8);
-            if (eff.doubleChance !== undefined) G.doubleChance = Math.min(eff.doubleChance, 0.8);
+            recomputeStats();
             soundBuy();
             updateUI();
             renderAll();
+            checkAchievements();
             saveGame();
         }
         function buyPerk(id) {
@@ -1682,36 +2188,194 @@
         }
 
         // ---- WATCH AD (с интеграцией Adsgram) ----
+        const ADSGRAM_BLOCK_ID = 'int-40036';
         let AdController = null;
-        if (typeof window.Adsgram !== 'undefined') {
+        let adInitAttempts = 0;
+
+        // Инициализация лениво + с повторными попытками — если SDK adsgram
+        // ещё не успел подгрузиться в момент разбора страницы (медленная сеть,
+        // WebView в Telegram и т.п.), это раньше навсегда оставляло AdController = null,
+        // и кнопка молча ничего не делала.
+        function getAdController() {
+            if (AdController) return AdController;
+            if (typeof window.Adsgram === 'undefined') {
+                console.warn('Adsgram SDK ещё не загружен (window.Adsgram undefined)');
+                return null;
+            }
             try {
-                AdController = window.Adsgram.init({ blockId: 'int-40008' });
+                AdController = window.Adsgram.init({ blockId: ADSGRAM_BLOCK_ID });
+                console.log('✅ Adsgram initialized with blockId:', ADSGRAM_BLOCK_ID);
             } catch (e) {
                 console.warn('Adsgram init error:', e);
+                AdController = null;
             }
-        } else {
-            console.warn('Adsgram SDK not loaded');
+            return AdController;
         }
+        // Пробуем инициализировать сразу, и ещё несколько раз в течение первых секунд —
+        // на случай если sad.min.js загрузился с задержкой.
+        function tryInitAdsgramWithRetry() {
+            if (getAdController()) return;
+            adInitAttempts++;
+            if (adInitAttempts < 10) {
+                setTimeout(tryInitAdsgramWithRetry, 500);
+            }
+        }
+        tryInitAdsgramWithRetry();
 
         function watchAd() {
-            if (AdController) {
-                AdController.show().then(() => {
-                    // Пользователь досмотрел рекламу до конца – начисляем награду
-                    grantAdReward();
-                }).catch((result) => {
-                    // Реклама не показана / пропущена / ошибка – награду не даём
-                    console.warn('Ad not completed:', result);
-                });
-            } else {
-                console.warn('Adsgram not available, ad cannot be shown');
+            const ctrl = getAdController();
+            if (!ctrl) {
+                showFloatingText('⚠️ Ad not ready, try again', '');
+                console.warn('Adsgram not available, ad cannot be shown. window.Adsgram =', typeof window.Adsgram);
+                return;
             }
+            ctrl.show().then((result) => {
+                // Пользователь досмотрел рекламу до конца – начисляем награду
+                console.log('Ad watched successfully:', result);
+                grantAdReward();
+            }).catch((result) => {
+                // Реклама не показана / пропущена / ошибка – награду не даём
+                console.warn('Ad not completed:', result);
+                showFloatingText('⚠️ Ad skipped or unavailable', '');
+            });
+        }
+
+        // ---- ACHIEVEMENTS ----
+        function checkAchievements() {
+            let unlockedSomething = false;
+            for (const a of ACHIEVEMENTS) {
+                if (G.achievementsUnlocked[a.id]) continue;
+                try {
+                    if (a.check()) {
+                        G.achievementsUnlocked[a.id] = true;
+                        unlockedSomething = true;
+                        if (a.reward && a.reward.crystals) G.crystals += a.reward.crystals;
+                        const name = a.name[currentLang] || a.name.en;
+                        showFloatingText('🏆 ' + name, 'crit');
+                        soundBoost();
+                    }
+                } catch (e) { /* ignore faulty check */ }
+            }
+            if (unlockedSomething) {
+                renderAchievements();
+                updateUI();
+                saveGame();
+            }
+        }
+
+        // ---- EPOCH BOSS FIGHT ----
+        let bossState = { active: false, hp: 0, maxHp: 0, timeLeft: 0, timerId: null };
+        function openBossFight() {
+            const boss = BOSSES[G.epoch];
+            if (!boss) return;
+            if (G.totalCoinsEarned < boss.requirement) return;
+            bossState.active = true;
+            bossState.hp = boss.hp;
+            bossState.maxHp = boss.hp;
+            bossState.timeLeft = boss.timeLimit;
+            document.getElementById('bossName').textContent = boss.icon + ' ' + (boss.name[currentLang] || boss.name.en);
+            document.getElementById('bossTimer').textContent = bossState.timeLeft;
+            document.getElementById('bossHpFill').style.width = '100%';
+            document.getElementById('bossHpText').textContent = formatNumber(bossState.hp) + ' HP';
+            document.getElementById('bossModal').classList.add('show');
+            if (bossState.timerId) clearInterval(bossState.timerId);
+            bossState.timerId = setInterval(bossTick, 1000);
+        }
+        function bossTick() {
+            if (!bossState.active) return;
+            bossState.timeLeft--;
+            document.getElementById('bossTimer').textContent = Math.max(0, bossState.timeLeft);
+            if (bossState.timeLeft <= 0) {
+                endBossFight(false);
+            }
+        }
+        function bossAttack() {
+            if (!bossState.active) return;
+            const dmg = Math.max(1, Math.floor(getClickPower()));
+            bossState.hp = Math.max(0, bossState.hp - dmg);
+            const pct = Math.max(0, (bossState.hp / bossState.maxHp) * 100);
+            document.getElementById('bossHpFill').style.width = pct + '%';
+            document.getElementById('bossHpText').textContent = formatNumber(bossState.hp) + ' HP';
+            soundClick();
+            if (bossState.hp <= 0) {
+                endBossFight(true);
+            }
+        }
+        function endBossFight(victory) {
+            bossState.active = false;
+            if (bossState.timerId) { clearInterval(bossState.timerId); bossState.timerId = null; }
+            document.getElementById('bossModal').classList.remove('show');
+            if (victory) {
+                G.epoch++;
+                soundPrestige();
+                showFloatingText(t('boss_victory'), 'crit');
+                checkAchievements();
+                renderAll();
+                saveGame();
+            } else {
+                showFloatingText(t('boss_fail'), '');
+            }
+        }
+        document.getElementById('bossAttackBtn').addEventListener('click', bossAttack);
+        document.getElementById('bossAttackBtn').addEventListener('touchstart', function(e) { e.preventDefault(); bossAttack(); }, { passive: false });
+        document.getElementById('bossCloseBtn').addEventListener('click', function() { endBossFight(false); bossState.timeLeft = 0; });
+        window.openBossFight = openBossFight;
+
+        // ---- RANDOM FLYING BONUS EVENTS ----
+        function scheduleNextBonus() {
+            const delay = (120 + Math.random() * 120) * 1000; // every 2-4 minutes
+            setTimeout(spawnFlyingBonus, delay);
+        }
+        function spawnFlyingBonus() {
+            const area = document.getElementById('clickArea');
+            if (area) {
+                const el = document.createElement('div');
+                el.className = 'flying-bonus';
+                const kinds = ['💰', '💎', '⚡'];
+                const kind = kinds[Math.floor(Math.random() * kinds.length)];
+                el.textContent = kind;
+                const maxX = Math.max(20, area.clientWidth - 70);
+                const maxY = Math.max(20, area.clientHeight - 70);
+                el.style.left = (20 + Math.random() * maxX) + 'px';
+                el.style.top = (20 + Math.random() * maxY) + 'px';
+                let claimed = false;
+                const claim = function(e) {
+                    if (e) e.preventDefault();
+                    if (claimed) return;
+                    claimed = true;
+                    if (kind === '💰') {
+                        const bonus = Math.max(10, Math.floor(getEffectiveAuto() * 30 + getClickPower() * 20));
+                        G.coins += bonus; G.totalCoins += bonus; G.totalCoinsEarned = (G.totalCoinsEarned || 0) + bonus;
+                        showFloatingText('🪙 +' + formatNumber(bonus), 'crit');
+                    } else if (kind === '💎') {
+                        const bonus = 5 + Math.floor(Math.random() * 10);
+                        G.crystals += bonus;
+                        showFloatingText('💎 +' + bonus, 'crystal');
+                    } else {
+                        G.incomeBoost.active = true;
+                        G.incomeBoost.end = Date.now() + 60 * 1000;
+                        G.incomeBoost.multiplier = 3;
+                        showFloatingText('⚡ x3 (1m)!', 'crit');
+                    }
+                    soundBoost();
+                    el.remove();
+                    updateUI();
+                    checkAchievements();
+                    saveGame();
+                };
+                el.addEventListener('click', claim);
+                el.addEventListener('touchstart', claim, { passive: false });
+                area.appendChild(el);
+                setTimeout(() => { if (!claimed) el.remove(); }, (10 + Math.random() * 5) * 1000);
+            }
+            scheduleNextBonus();
         }
 
         // ---- RENDER ----
         function renderUpgrades(tab) {
             const container = document.getElementById('upgradeList' + tab);
             if (!container) return;
-            const ids = Object.keys(UPGRADES).filter(id => UPGRADES[id].tab === tab);
+            const ids = Object.keys(UPGRADES).filter(id => UPGRADES[id].tab === tab && (!UPGRADES[id].minEpoch || G.epoch >= UPGRADES[id].minEpoch));
             let html = '';
             for (const id of ids) {
                 const u = UPGRADES[id];
@@ -1723,11 +2387,13 @@
                 const name = u.name[currentLang] || u.name.en;
                 const desc = u.desc[currentLang] || u.desc.en;
                 const displayVal = u.display(lvl);
+                const ms = milestoneMultiplier(lvl);
+                const msBadge = ms > 1 ? `<span class="uc-badge owned">x${ms}</span>` : '';
                 html += `
                     <div class="upgrade-card ${disabled ? 'disabled' : ''}" onclick="buyUpgrade('${id}')">
                         <div class="uc-icon">${u.icon}</div>
                         <div class="uc-info">
-                            <div class="uc-name">${name} <span class="uc-level">${t('level')} ${lvl}</span></div>
+                            <div class="uc-name">${name} <span class="uc-level">${t('level')} ${lvl}</span> ${msBadge}</div>
                             <div class="uc-desc">${desc} <strong>${displayVal}</strong></div>
                         </div>
                         <div class="uc-cost">
@@ -1824,6 +2490,54 @@
             }
             container.innerHTML = html;
         }
+        function renderEpochPanel() {
+            const container = document.getElementById('epochPanel');
+            if (!container) return;
+            const epochName = (EPOCHS[G.epoch] && (EPOCHS[G.epoch].name[currentLang] || EPOCHS[G.epoch].name.en)) || '???';
+            const boss = BOSSES[G.epoch];
+            if (!boss) {
+                container.innerHTML = `
+                    <div class="ep-title">🗺️ ${epochName}</div>
+                    <div class="ep-desc">${t('epoch_maxed')}</div>
+                `;
+                return;
+            }
+            const progress = Math.min(1, G.totalCoinsEarned / boss.requirement);
+            const unlocked = G.totalCoinsEarned >= boss.requirement;
+            const bossName = boss.name[currentLang] || boss.name.en;
+            container.innerHTML = `
+                <div class="ep-title">🗺️ ${epochName}</div>
+                <div class="ep-desc">${t('epoch_progress')}: ${formatNumber(G.totalCoinsEarned)} / ${formatNumber(boss.requirement)}</div>
+                <div class="ep-progress-track"><div class="ep-progress-fill" style="width:${(progress*100).toFixed(1)}%"></div></div>
+                <button class="btn-boss" ${!unlocked ? 'disabled' : ''} onclick="openBossFight()">
+                    ${boss.icon} ${t('epoch_challenge')}: ${bossName}
+                </button>
+                ${!unlocked ? `<div style="color:var(--text-muted);font-size:11px;margin-top:6px;">${t('epoch_locked')}</div>` : ''}
+            `;
+        }
+        function renderAchievements() {
+            const container = document.getElementById('achievementList');
+            if (!container) return;
+            const unlockedCount = Object.keys(G.achievementsUnlocked || {}).length;
+            let html = `<div class="ach-summary">✅ ${unlockedCount}/${ACHIEVEMENTS.length} &nbsp;·&nbsp; ${t('ach_bonus')}: +${((getAchievementMult()-1)*100).toFixed(1)}%</div>`;
+            for (const a of ACHIEVEMENTS) {
+                const isUnlocked = !!G.achievementsUnlocked[a.id];
+                const showHidden = a.hidden && !isUnlocked;
+                const name = showHidden ? t('hidden_ach_name') : (a.name[currentLang] || a.name.en);
+                const desc = showHidden ? t('hidden_ach_desc') : (a.desc[currentLang] || a.desc.en);
+                html += `
+                    <div class="ach-item ${isUnlocked ? 'unlocked' : ''}">
+                        <div class="ach-icon">${showHidden ? '❓' : a.icon}</div>
+                        <div class="ach-info">
+                            <div class="ach-name">${name}</div>
+                            <div class="ach-desc">${desc}</div>
+                        </div>
+                        <div class="ach-check">${isUnlocked ? '✅' : ''}</div>
+                    </div>
+                `;
+            }
+            container.innerHTML = html;
+        }
         function updateUI() {
             document.getElementById('coinDisplay').textContent = formatNumber(Math.floor(G.coins));
             document.getElementById('crystalDisplay').textContent = formatNumber(Math.floor(G.crystals));
@@ -1838,6 +2552,8 @@
             renderCrystalShop();
             renderPerks();
             renderPrestigePanel();
+            renderEpochPanel();
+            renderAchievements();
             updateUI();
         }
 
@@ -1857,9 +2573,12 @@
                 const data = {
                     coins: G.coins, totalCoins: G.totalCoins, totalCoinsEarned: G.totalCoinsEarned || G.totalCoins,
                     crystals: G.crystals, prestigePoints: G.prestigePoints, totalPrestigePoints: G.totalPrestigePoints,
-                    clickPower: G.clickPower, autoIncome: G.autoIncome, critChance: G.critChance, doubleChance: G.doubleChance,
                     upgrades: G.upgrades, perks: G.perks, incomeBoost: G.incomeBoost, autoBoost: G.autoBoost,
                     prestigeUnlocked: G.prestigeUnlocked, lastSave: Date.now(),
+                    totalClicks: G.totalClicks, prestigeCount: G.prestigeCount, epoch: G.epoch,
+                    achievementsUnlocked: G.achievementsUnlocked,
+                    referralCode: G.referralCode, referralRedeemed: G.referralRedeemed,
+                    usedReferralCodes: G.usedReferralCodes || {},
                 };
                 localStorage.setItem('cyberclicker_save', JSON.stringify(data));
             } catch (e) { /* ignore */ }
@@ -1871,26 +2590,21 @@
                 const data = JSON.parse(raw);
                 Object.assign(G, data);
                 if (!G.totalCoinsEarned) G.totalCoinsEarned = G.totalCoins;
-                G.clickPower = 1;
-                G.autoIncome = 0;
-                G.critChance = 0;
-                G.doubleChance = 0;
-                for (const [id, lvl] of Object.entries(G.upgrades)) {
-                    const u = UPGRADES[id];
-                    if (!u) continue;
-                    const eff = u.effect(lvl);
-                    if (eff.clickPower) G.clickPower += eff.clickPower;
-                    if (eff.autoIncome) G.autoIncome += eff.autoIncome;
-                    if (eff.critChance !== undefined) G.critChance = Math.min(eff.critChance, 0.8);
-                    if (eff.doubleChance !== undefined) G.doubleChance = Math.min(eff.doubleChance, 0.8);
-                }
+                if (!G.achievementsUnlocked) G.achievementsUnlocked = {};
+                if (!G.usedReferralCodes) G.usedReferralCodes = {};
+                recomputeStats();
                 return true;
             } catch (e) { return false; }
         }
         function checkOfflineIncome() {
             const now = Date.now();
             const last = G.lastSave || now;
-            const diff = (now - last) / 1000;
+            let diff = (now - last) / 1000;
+            const MAX_OFFLINE_SECONDS = 8 * 60 * 60; // hard cap: 8 hours
+            if (diff > MAX_OFFLINE_SECONDS) {
+                G.metaLongOffline = true;
+                diff = MAX_OFFLINE_SECONDS;
+            }
             if (diff > 10) {
                 const income = getEffectiveAuto();
                 const earned = income * diff * 0.5;
@@ -1905,6 +2619,7 @@
                         document.getElementById('offlineModal').classList.remove('show');
                         updateUI();
                         renderAll();
+                        checkAchievements();
                         saveGame();
                         soundBuy();
                     };
@@ -1928,11 +2643,21 @@
             });
         }
 
-        // ---- MUTE ----
+        // ---- SETTINGS TOGGLES ----
+        function updateMuteBtn() {
+            const btn = document.getElementById('muteBtn');
+            btn.textContent = soundEnabled ? 'ON' : 'OFF';
+            btn.classList.toggle('off', !soundEnabled);
+        }
         document.getElementById('muteBtn').addEventListener('click', function() {
             soundEnabled = !soundEnabled;
-            this.textContent = soundEnabled ? '🔊' : '🔇';
-            this.classList.toggle('muted', !soundEnabled);
+            updateMuteBtn();
+        });
+        document.getElementById('settingsBtn').addEventListener('click', function() {
+            document.getElementById('settingsModal').classList.add('show');
+        });
+        document.getElementById('settingsCloseBtn').addEventListener('click', function() {
+            document.getElementById('settingsModal').classList.remove('show');
         });
 
         // ---- LANGUAGE ----
@@ -1952,6 +2677,102 @@
             });
         }
 
+        // ---- REFERRAL SYSTEM ----
+        // Note: this is a fully client-side (no backend) game, so a code can only reward the
+        // device that redeems it. Sharing codes both ways (each enters the other's code) lets
+        // both players receive the bonus once.
+        function ensureReferralCode() {
+            if (!G.referralCode) {
+                const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+                let code = '';
+                for (let i = 0; i < 6; i++) code += chars[Math.floor(Math.random() * chars.length)];
+                G.referralCode = code;
+                saveGame();
+            }
+            document.getElementById('myReferralCode').textContent = G.referralCode;
+        }
+        function copyTextToClipboard(text) {
+            return new Promise((resolve) => {
+                if (navigator.clipboard && navigator.clipboard.writeText && window.isSecureContext) {
+                    navigator.clipboard.writeText(text).then(() => resolve(true)).catch(() => resolve(fallbackCopy(text)));
+                } else {
+                    resolve(fallbackCopy(text));
+                }
+            });
+        }
+        function fallbackCopy(text) {
+            try {
+                const ta = document.createElement('textarea');
+                ta.value = text;
+                ta.style.position = 'fixed';
+                ta.style.top = '-9999px';
+                ta.style.left = '-9999px';
+                ta.style.userSelect = 'text';
+                ta.style.webkitUserSelect = 'text';
+                document.body.appendChild(ta);
+                ta.focus();
+                ta.select();
+                ta.setSelectionRange(0, text.length);
+                const ok = document.execCommand('copy');
+                document.body.removeChild(ta);
+                return ok;
+            } catch (e) {
+                return false;
+            }
+        }
+        document.getElementById('copyReferralBtn').addEventListener('click', function() {
+            const code = G.referralCode || '';
+            const msg = document.getElementById('referralMsg');
+            copyTextToClipboard(code).then((ok) => {
+                if (ok) {
+                    msg.style.color = 'var(--accent-green)';
+                    msg.textContent = t('referral_copied');
+                } else {
+                    // Could not copy automatically (common in some in-app browsers) —
+                    // select the code so the person can copy it manually.
+                    const box = document.getElementById('myReferralCode');
+                    if (window.getSelection && document.createRange) {
+                        const range = document.createRange();
+                        range.selectNodeContents(box);
+                        const sel = window.getSelection();
+                        sel.removeAllRanges();
+                        sel.addRange(range);
+                    }
+                    msg.style.color = 'var(--accent-gold)';
+                    msg.textContent = t('referral_select_manually');
+                }
+            });
+        });
+        document.getElementById('referralSubmitBtn').addEventListener('click', function() {
+            const input = document.getElementById('referralInput');
+            const msg = document.getElementById('referralMsg');
+            const code = (input.value || '').trim().toUpperCase();
+            if (!code || code.length !== 6) {
+                msg.style.color = '#f87171'; msg.textContent = t('referral_invalid'); return;
+            }
+            if (code === G.referralCode) {
+                msg.style.color = '#f87171'; msg.textContent = t('referral_own_code'); return;
+            }
+            if (G.referralRedeemed) {
+                msg.style.color = '#f87171'; msg.textContent = t('referral_already'); return;
+            }
+            G.referralRedeemed = true;
+            G.usedReferralCodes = G.usedReferralCodes || {};
+            G.usedReferralCodes[code] = true;
+            G.crystals += 150;
+            G.coins += 100000;
+            G.totalCoins += 100000;
+            G.totalCoinsEarned = (G.totalCoinsEarned || 0) + 100000;
+            msg.style.color = 'var(--accent-green)';
+            msg.textContent = t('referral_success');
+            input.value = '';
+            soundPrestige();
+            updateUI();
+            renderAll();
+            checkAchievements();
+            saveGame();
+        });
+
         // ---- AD BTN ----
         document.getElementById('adBtn').addEventListener('click', watchAd);
 
@@ -1969,11 +2790,15 @@
         function init() {
             loadGame();
             G.lastSave = Date.now();
+            ensureReferralCode();
             setupLanguage();
             setupTabs();
             translateUI();
+            updateMuteBtn();
             checkOfflineIncome();
+            checkAchievements();
             lastAutoTick = Date.now();
+            scheduleNextBonus();
             setInterval(() => {
                 tickAuto();
                 updateUI();
